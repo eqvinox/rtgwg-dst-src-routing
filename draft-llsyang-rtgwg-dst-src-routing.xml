@@ -38,7 +38,7 @@
 <?rfc subcompact="no" ?>
 <!-- end of list of popular I-D processing instructions -->
 <!-- end of list of processing instructions -->
-<rfc category="std" docName="draft-llsyang-rtgwg-dst-src-routing-01"
+<rfc category="std" docName="draft-llsyang-rtgwg-dst-src-routing-02"
      ipr="trust200902">
   <front>
     <title abbrev="Destination/Source Routing">
@@ -1034,7 +1034,7 @@ recursive resolution result:
     
     <t>The destination/source routing has been implemented and tested under an experiment network 
     with four routers that supports both the new routing and forwarding plane. China Education and Research Network (CERNET) 
-    is going to deploy destination/source routing with 20 upgraded routers in the next step.</t>
+    has deployed 20 upgraded destination/source routers recently.</t>
 	</section>
   </back>
 </rfc>
