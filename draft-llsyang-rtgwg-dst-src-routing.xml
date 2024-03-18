@@ -38,7 +38,7 @@
 <?rfc subcompact="no" ?>
 <!-- end of list of popular I-D processing instructions -->
 <!-- end of list of processing instructions -->
-<rfc category="std" docName="draft-llsyang-rtgwg-dst-src-routing-00"
+<rfc category="std" docName="draft-llsyang-rtgwg-dst-src-routing-01"
      ipr="trust200902">
   <front>
     <title abbrev="Destination/Source Routing">
@@ -89,15 +89,30 @@
       <address>
         <postal>
           <street></street>
-          <city></city>
+          <city>Shenzhen</city>
           <region/>
-          <code></code>
+          <code>518060</code>
           <country>China</country>
         </postal>
         <email>yang.shu@szu.edu.cn</email>
       </address>
     </author>  
+        <author fullname="Mingwei Xu" initials="M." surname="Xu">
+      <organization>Tsinghua University</organization>
+      <address>
+        <postal>
+          <street></street>
+          <city>Beijing</city>
+          <region/>
+          <code>100084</code>
+          <country>China</country>
+        </postal>
+        <email>xumw@tsinghua.edu.cn</email>
+      </address>
+    </author>  
+    
     <date/>
+
     <area>Routing</area>
     <workgroup>rtgwg</workgroup>
     <abstract>
@@ -786,6 +801,12 @@ recursive resolution result:
 
     <section anchor="log" title="Change Log">
       <t><list style="hanging">
+        <t hangText="July 2023 [-01]:"><list>
+              <t>added section on implementation status</t>
+              </list></t>
+      	<t hangText="July 2022 [-00]:"><list>
+              <t>renamed to draft-llsyang-rtgwg-dst-src-routing, no content changes</t>
+              </list></t>
           <t hangText="March 2019 [-07]:"><list>
               <t>no changes</t>
             </list></t>
@@ -1007,5 +1028,13 @@ recursive resolution result:
           in the selected FIB table.</t>
       </section>
     </section>
+    
+    <section title="Implementation Status">
+    <t>This section is to be removed before publishing as an RFC.</t>
+    
+    <t>The destination/source routing has been implemented and tested under an experiment network 
+    with four routers that supports both the new routing and forwarding plane. China Education and Research Network (CERNET) 
+    is going to deploy destination/source routing with 20 upgraded routers in the next step.</t>
+	</section>
   </back>
 </rfc>
