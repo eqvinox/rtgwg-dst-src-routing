@@ -38,23 +38,21 @@
 <?rfc subcompact="no" ?>
 <!-- end of list of popular I-D processing instructions -->
 <!-- end of list of processing instructions -->
-<rfc category="std" docName="draft-ietf-rtgwg-dst-src-routing-revive-00"
-     ipr="trust200902">
+<rfc category="std" docName="draft-ietf-rtgwg-dst-src-routing-revive-01"
+     ipr="trust200902" consensus="true">
   <front>
     <title abbrev="Destination/Source Routing">
       Destination/Source Routing</title>
 
-    <author fullname="David Lamparter" initials="D." surname="Lamparter">
-      <organization>NetDEF</organization>
+    <author fullname="David 'equinox' Lamparter" initials="D" surname="Lamparter">
+      <organization>NetDEF, Inc.</organization>
       <address>
         <postal>
-          <street></street>
-          <city>Leipzig</city>
-          <code>04103</code>
-          <region></region>
-          <country>Germany</country>
+          <city>San Jose</city>
+          <country>USA</country>
         </postal>
-        <email>david@opensourcerouting.org</email>
+        <email>equinox@diac24.net</email>
+        <email>equinox@opensourcerouting.org</email>
       </address>
     </author>
 
@@ -808,6 +806,9 @@ recursive resolution result:
 
     <section anchor="log" title="Change Log">
       <t><list style="hanging">
+        <t hangText="July 2024 [-01]:"><list>
+          <t>addressed comments during WG adoption call</t>
+        </list></t>
         <t hangText="July 2024 [-00]:"><list>
               <t>renamed to draft-ietf-rtgwg-dst-src-routing-revive, no content changes</t>
               </list></t>
