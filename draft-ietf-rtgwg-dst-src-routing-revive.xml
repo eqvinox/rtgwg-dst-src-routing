@@ -808,6 +808,9 @@ recursive resolution result:
 
     <section anchor="log" title="Change Log">
       <t><list style="hanging">
+        <t hangText="October 2024 [-02]:"><list>
+          <t>no changes</t>
+        </list></t>
         <t hangText="July 2024 [-01]:"><list>
           <t>addressed comments during WG adoption call</t>
         </list></t>
