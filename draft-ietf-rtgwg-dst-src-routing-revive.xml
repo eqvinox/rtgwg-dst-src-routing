@@ -812,19 +812,22 @@ recursive resolution result:
           <t>addressed comments during WG adoption call</t>
         </list></t>
         <t hangText="July 2024 [-00]:"><list>
-              <t>renamed to draft-ietf-rtgwg-dst-src-routing-revive, no content changes</t>
+              <t>renamed to draft-ietf-rtgwg-dst-src-routing-revive,<br/>
+                 no content changes</t>
               </list></t>
         <t hangText="July 2023 [-01]:"><list>
               <t>added section on implementation status</t>
               </list></t>
       	<t hangText="July 2022 [-00]:"><list>
-              <t>renamed to draft-llsyang-rtgwg-dst-src-routing, no content changes</t>
+              <t>renamed to draft-llsyang-rtgwg-dst-src-routing,<br/>
+                 no content changes</t>
               </list></t>
           <t hangText="March 2019 [-07]:"><list>
               <t>no changes</t>
             </list></t>
           <t hangText="October 2017 [-06]:"><list>
-              <t>clarify described operation is not an implementation guide</t>
+              <t>clarify described operation is not an<br/>
+                 implementation guide</t>
               <t>editorial cleanups</t>
             </list></t>
           <t hangText="July 2017 [-05]:"><list>
@@ -838,7 +841,8 @@ recursive resolution result:
               <t>note backtracking workaround/caveat</t>
             </list></t>
           <t hangText="November 2015 [-02]:"><list>
-            <t>added section on destination-source routing use cases</t>
+            <t>added section on destination-source routing<br/>
+               use cases</t>
             <t>added section on alternative lookup algorithm</t>
             <t>added section on requirement for dynamic routing
               protocols dessiminating destination-source informaton</t>
