@@ -84,7 +84,7 @@
         <email>furry@google.com</email>
       </address>
     </author>  
-  <author fullname="Shu Yang" initials="S." surname="Yang">
+  <author fullname="Shu Yang" initials="S." surname="Yang" role="editor">
       <organization>Shenzhen University</organization>
       <address>
         <postal>
