@@ -300,8 +300,7 @@
           distributed, routers can rely on this additional information to
           improve their behaviour towards hosts connected to them.  This
           specifically includes IPv6 Router Advertisements, which is described
-          in <xref target="RFC8028"/> and <xref
-            target="I-D.linkova-v6ops-conditional-ras"/>.</t>
+          in <xref target="RFC8028"/> and <xref target="RFC8475"/>.</t>
       </section>
     </section>
 
@@ -873,9 +872,9 @@ recursive resolution result:
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5340.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8028.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8043.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8475.xml"/>
       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.troan-homenet-sadr.xml"/>
       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.baker-ipv6-isis-dst-src-routing"/>
-      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.linkova-v6ops-conditional-ras"/>
       <reference anchor="hal-00947234v1" target="https://hal-univ-diderot.archives-ouvertes.fr/hal-00947234v1">
         <front>
           <title>Source-sensitive routing</title>
