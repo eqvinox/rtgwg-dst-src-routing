@@ -12,4 +12,6 @@ clean:
 	xml2rfc --text -o $@ $^
 %.html: %.xml
 	xml2rfc --html -o $@ $^
+%.pdf: %.xml
+	xml2rfc --pdf -o $@ $^
 
