@@ -642,6 +642,83 @@ recursive resolution result:
           inquire the routing system, unlike domain information or enumeration,
           which is higher-layer application information.</t>
       </section>
+      <section title="Performing Source Address Selection">
+        <t>
+            Any system implementing destination-source routing, including plain
+            end hosts, needs some way to select a source address particularly
+            for outgoing connections.   While the application establishing
+            the connection can take over this function (i.e. binding a socket
+            to a source address), this is generally performed by the system
+            following <xref target="RFC6724"/>.
+        </t>
+        <t>
+            Critically, selecting a source address is done after looking up a
+            route to the destination and <xref target="RFC6724" section="5"/>
+            makes multiple references to the path "used to send to D".  This
+            means that implementations <bcp14>MUST</bcp14> provide some manner
+            of establishing useful results for this lookup, done without known
+            source address.
+        </t>
+        <t>
+            Details of what exact result this routing lookup yields or how it
+            is implemented is essentially analogous to choosing between
+            equal candidate routes (i.e. distinct routes, not one route with
+            multiple nexthops) in a configuration that does not implement
+            destination-source routing.  The result is a matter and expression
+            of local policy.
+        </t>
+        <t>
+            It is <bcp14>RECOMMENDED</bcp14> to choose one of the following
+            options:
+          <ul>
+            <li>an implementation <bcp14>MAY</bcp14>, as necessary, install
+              destination-source routes with a source prefix of ::/128, and
+              perform routing lookups for the purpose of source address
+              selection by using that source prefix.</li>
+            <li>an implementation <bcp14>MAY</bcp14> introduce and use a
+              separate route lookup function (that does not use
+              destination-source routing) for the purpose of source
+              address selection</li>
+          </ul>
+            Above list is not exhaustive and other approaches may be valid and
+            useful depending on context.
+        </t>
+      </section>
+      <section title="Improving Source Address Selection">
+        <t>
+            Beyond the considerations in the previous section, source address
+            selection and routing choice is key to improving host behavior in
+            the presence of multiple routers, prefixes or interfaces.  Rule
+            5.5 as noted in <xref target="RFC6724" section="5"/>, and
+            <xref target="RFC8028"/> (note <xref target="RFC8028-ERRATA7009"/>)
+            are at the heart of this.
+        </t>
+        <t>
+            Unfortunately, the functionality described by the text in rule 5.5
+            is insufficient to make these scenarios work.  A source address
+            is choosen in context of a particular nexthop, but there is no
+            mechanism preferring that nexthop for packets exchanged afterwards.
+            <xref target="RFC8028"/> is intended to address this and makes
+            several recommendations involving use of the source address.
+        </t>
+        <t>
+            Following these recommendation and resolving the issues resulting
+            from it essentially yields destination-source routing.  The more
+            general the solution is, the closer it looks and functions to
+            destination-source routing.
+        </t>
+        <t>
+            Destination-source routing is explicitly applicable to hosts, and
+            in the context of fully implementing <xref target="RFC6724"/> and
+            <xref target="RFC8028"/>, it is <bcp14>RECOMMENDED</bcp14> that
+            end hosts in fact implement destination-source routing.
+        </t>
+        <t>
+            Additional routes (with source prefixes) need to be installed into
+            the routing table in the course of this.  The exact semantics of
+            this are left to be specified in a future document.
+        </t>
+      </section>
     </section>
 
     <section title="Interoperability" anchor="interop">
@@ -870,6 +947,7 @@ recursive resolution result:
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4271.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5308.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5340.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6724.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8028.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8043.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8475.xml"/>
@@ -883,6 +961,18 @@ recursive resolution result:
           <date year="2014"/>
         </front>
         <seriesInfo name="hal" value="00947234v1" />
+      </reference>
+      <reference anchor="RFC8028-ERRATA7009" target="https://www.rfc-editor.org/errata/eid7009">
+        <front>
+          <title>RFC Errata Report #7009, on RFC8028 (First-Hop Router Selection by Hosts in a Multi-Prefix Network)</title>
+          <author fullname="B. Carpenter" initials="B." surname="Carpenter"/>
+          <date month="June" year="2022"/>
+          <abstract>
+            <t>This change recognizes the fact that while server applications commonly
+              bind to a specific source address before sending a packet, client
+              applications commonly do not do so.</t>
+          </abstract>
+        </front>
       </reference>
     </references>
 
