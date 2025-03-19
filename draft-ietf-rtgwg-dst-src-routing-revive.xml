@@ -1052,6 +1052,10 @@ recursive resolution result:
     <section title="Implementation Status">
     <t>This section is to be removed before publishing as an RFC.</t>
     
+    <t>The Linux kernel implementation of destination-source routing - which
+      predates pretty much all other work on this - is cited in the
+      acknowledgements section.  The CONFIG_IPV6_SUBTREES setting enables the
+      code.</t>
     <t>The destination/source routing has been implemented and tested under an experiment network 
     with four routers that supports both the new routing and forwarding plane. China Education and Research Network (CERNET) 
     has deployed 20 upgraded destination/source routers recently.</t>
