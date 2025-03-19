@@ -316,7 +316,7 @@
 
         <t>More specifically, forwarding plane implementations are expected to
           internally diverge from the lookup algorithm described below.  The
-          router as a whole MUST ultimately behave as if the steps below were
+          router as a whole <bcp14>MUST</bcp14> ultimately behave as if the steps below were
           followed.  An internal variation providing improved performance,
           as well as a variation matching existing implementations with
           reversed order are described in <xref target="nobacktrack"/>
@@ -328,13 +328,13 @@
         to all route entries.  This document assumes all entries have a source
         prefix, with ::/0 as default value for entries installed without a
         specified source prefix.  This need not be implemented in this
-        particular way, however the system MUST behave exactly as if it were.
+        particular way, however the system <bcp14>MUST</bcp14> behave exactly as if it were.
         In particular, a difference in behaviour between routes with a source
-        prefix of ::/0 and routes without source prefix MUST NOT be visible.
+        prefix of ::/0 and routes without source prefix <bcp14>MUST NOT</bcp14> be visible.
       </t>
-      <t>For uniqueness considerations, the source prefix factors MUST be
+      <t>For uniqueness considerations, the source prefix factors <bcp14>MUST</bcp14> be
         taken into account for comparisons.  Two routes with identical
-        information except the source prefix MAY exist and MUST be installed
+        information except the source prefix <bcp14>MAY</bcp14> exist and <bcp14>MUST</bcp14> be installed
         and matched.</t>
       </section>
 
@@ -352,8 +352,8 @@
           with exactly the destination prefix previously found.  If and only if
           no such route exists (because none of the source prefixes match), the
           lookup moves to the next less specific destination prefix.</t>
-        <t>A router MUST continue to a less specific destination prefix if no
-          route matches on the source prefix.  It MUST NOT terminate lookup
+        <t>A router <bcp14>MUST</bcp14> continue to a less specific destination prefix if no
+          route matches on the source prefix.  It <bcp14>MUST NOT</bcp14> terminate lookup
           on such an event.</t>
         <t>Using A &lt; B to mean "A is more specific than B", this is
           represented as:</t>
@@ -404,13 +404,13 @@ A < B :=    Adst <  Bdst
           and other accompanying routing information. Source range
           information may be propagated with all destination prefixes
           or only some of them. Destination prefixes advertised
-          without associated source range MUST be treated as having
+          without associated source range <bcp14>MUST</bcp14> be treated as having
           default source range ::/0.</t>
 
-        <t>Dynamic routing protocols MUST be able to propagate
+        <t>Dynamic routing protocols <bcp14>MUST</bcp14> be able to propagate
           multiple routes whose destination prefix is the same but
           associated source ranges are different. Such unique pairs of
-          destination and source MUST be treated as different
+          destination and source <bcp14>MUST</bcp14> be treated as different
           destination-source routes.</t>
 
         <t>There is no limitation on how source range information is
@@ -441,7 +441,7 @@ A < B :=    Adst <  Bdst
 
         <t>Thus specifications of destination-source routing protocols
           (either newly defined protocols or enhancements to already
-          existing one) MUST take provisions to guarantee loop-free
+          existing one) <bcp14>MUST</bcp14> take provisions to guarantee loop-free
           operations.</t>
 
         <t>There are 3 possible approaches to avoid looping condition:</t>
@@ -486,7 +486,7 @@ A < B :=    Adst <  Bdst
           of the entire domain but cannot assume that routers
           understand destination-source routing information only
           because they participated in its flooding. Such protocols
-          MUST explicitly advertise support for the destination-source
+          <bcp14>MUST</bcp14> explicitly advertise support for the destination-source
           routing.</t>
       </section>
 
@@ -498,7 +498,7 @@ A < B :=    Adst <  Bdst
 	  target="RFC4271">BGP</xref> NLRI.</t>
 
         <t>Dynamic routing protocol supporting recursive routes
-          MUST specify how this recursive routing information is
+          <bcp14>MUST</bcp14> specify how this recursive routing information is
           interpreted in the context of destination-source routing as
           part of standardizing destination-source routing extensions
           for the protocol. <xref target="recurs"/> lists several
@@ -556,7 +556,7 @@ A < B :=    Adst <  Bdst
         <t>Recursive resolution of configured static routes is local
           to router where recursive static routes were configured,
           thus behavior is implementation's choice. Implementations
-          SHOULD provide option (3) from the above list as their
+          <bcp14>SHOULD</bcp14> provide option (3) from the above list as their
           default method of recursive static route resolution. This is
           both to guarantee that destination-only recursive static
           routes do not change their behavior when router's software
@@ -604,17 +604,17 @@ recursive resolution result:
         </section>
       </section>
       <section title="Unicast Reverse Path Filtering">
-        <t>Unicast reverse path filtering MUST use dst-src routes analog to its
-          usage of destination-only routes.  However, the system MAY match
-          either only incoming source against routes' destinations, or it MAY
+        <t>Unicast reverse path filtering <bcp14>MUST</bcp14> use dst-src routes analog to its
+          usage of destination-only routes.  However, the system <bcp14>MAY</bcp14> match
+          either only incoming source against routes' destinations, or it <bcp14>MAY</bcp14>
           match source and destination against routes' destination and
-          source.  It MUST NOT ignore dst-src routes on uRPF checks.</t>
+          source.  It <bcp14>MUST NOT</bcp14> ignore dst-src routes on uRPF checks.</t>
       </section>
       <section title="Multicast Reverse Path Forwarding">
         <t>Multicast Reverse Path Lookups are used to find paths towards the
           (known) sender of multicast packets.  Since the destination of these
           packets is the multicast group, it cannot be matched against the
-          source part of a dst-src route.  Therefore, dst-src routes MUST be
+          source part of a dst-src route.  Therefore, dst-src routes <bcp14>MUST</bcp14> be
           ignored for Multicast RPF lookups.</t>
       </section>
       <section title="Testing for Connectivity Availability">
@@ -624,17 +624,17 @@ recursive resolution result:
           in the routing table.</t>
         <t>Since the default route may now be qualified with a source prefix,
           this test can fail.  If no additional information is available to
-          qualify this test, systems SHOULD test for the existence of any
+          qualify this test, systems <bcp14>SHOULD</bcp14> test for the existence of any
           default route instead, e.g. include routes with default destination
           but non-default source prefix.</t>
         <t>However, if the test can be associated with a source address or
-          source prefix, this data SHOULD be used in looking up a default
-          route.  Depending on the application, it MAY also be useful to -
+          source prefix, this data <bcp14>SHOULD</bcp14> be used in looking up a default
+          route.  Depending on the application, it <bcp14>MAY</bcp14> also be useful to -
           possibly additionally - consider "connectivity" to be available if
           any route exists where the route's source prefix covers the prefix
           or address under consideration, allowing arbitrary destination
           prefixes.</t>
-        <t>Note though that this approach to routing SHOULD NOT be used to
+        <t>Note though that this approach to routing <bcp14>SHOULD NOT</bcp14> be used to
           infer a list of source prefixes in an enumerative manner, or even to
           guess domain information.  Specifically, if an operator uses more
           specific source prefixes to refine their routing, the inferred
@@ -718,7 +718,7 @@ recursive resolution result:
         <t>If D/S routes are discarded by non-D/S routers, D/S routers will
           not receive non-working routes and can select from other available
           working D/S routes.</t>
-        <t>Note that for this to work, non-D/S routers MUST NOT flood D/S
+        <t>Note that for this to work, non-D/S routers <bcp14>MUST NOT</bcp14> flood D/S
           routing information.  This can be achieved in 2 ways:
           <list style="numbers">
             <t>Using some preexisting encoding to signal non-D/S routers to not
@@ -891,7 +891,7 @@ recursive resolution result:
       <section title="Pre-expanded 2-step lookup without backtracking"
           anchor="nobacktrack">
         <t>The backtracking behavior (specified in <xref target="deflookup"/>
-          as "A router MUST continue to a less specific destination prefix")
+          as "A router <bcp14>MUST</bcp14> continue to a less specific destination prefix")
           has been shown to potentially cause a significant loss of forwarding
           performance since forwarding a single packet may require a large
           number of table lookups.  (The degenerate case is 129 destination
