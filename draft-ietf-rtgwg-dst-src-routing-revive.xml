@@ -884,8 +884,8 @@ recursive resolution result:
       <t>This document itself is largely the result of discussions with Fred
         Baker and derives from <xref
           target="I-D.baker-ipv6-isis-dst-src-routing"/>.</t>
-      <t>Thanks to Chris Bowers, Acee Lindem, Tony Przygienda, Jeffrey Haas
-        and Éric Vyncke for their input and review.</t>
+      <t>Thanks to Chris Bowers, Jeffrey Haas, Ted Lemon, Acee Lindem,
+        Tony Przygienda, and Éric Vyncke for their input and review.</t>
       <t>The Linux kernel is providing an implementation of the behaviour
         described here since even before the document was started.</t>
     </section>
