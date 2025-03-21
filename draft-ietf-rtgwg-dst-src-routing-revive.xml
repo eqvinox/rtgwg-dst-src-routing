@@ -354,13 +354,24 @@
         <t>A router <bcp14>MUST</bcp14> continue to a less specific destination prefix if no
           route matches on the source prefix.  It <bcp14>MUST NOT</bcp14> terminate lookup
           on such an event.</t>
-        <t>Using A &lt; B to mean "A is more specific than B", this is
+        <t>Using A ⊂ B to mean "A is more specific than B", this is
           represented as:</t>
         <figure><artwork><![CDATA[
-A < B :=    Adst <  Bdst
-        || (Adst == Bdst && Asrc < Bsrc)
+A ⊂ B :=    Adst ⊂  Bdst
+        || (Adst == Bdst && Asrc ⊂ Bsrc)
 ]]>
 </artwork>
+        <t><cref>RFC editor note (1) (to be removed before publishing): this
+          originally used &lt; rather than ⊂.  Using &lt; as a symbol is
+          <em>slightly</em> ambiguous due to the neverending semiotic conflict
+          with a <em>larger</em> prefix having a <em>shorter</em> prefix
+          length.  There is no strong need to use ⊂ here, reverting to &lt;
+          (and thus ASCII) is also fine.</cref></t>
+        <t><cref>RFC editor note (2) (to be removed before publishing): The
+          two lines above are carefully formatted to vertically align their
+          terms.  Setting it as figure/artwork/monospaced code block gets
+          this effect in TXT and HTML outputs, but not PDF.  Any efforts
+          to improve this formatting are much appreciated.</cref></t>
         </figure>
       </section>
 
