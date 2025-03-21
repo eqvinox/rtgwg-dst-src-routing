@@ -653,7 +653,7 @@ recursive resolution result:
           inquire the routing system, unlike domain information or enumeration,
           which is higher-layer application information.</t>
       </section>
-      <section title="Performing Source Address Selection">
+      <section title="Performing Source Address Selection" anchor="addrselneeds">
         <t>
             Any system implementing destination-source routing, including plain
             end hosts, needs some way to select a source address particularly
@@ -695,7 +695,7 @@ recursive resolution result:
             useful depending on context.
         </t>
       </section>
-      <section title="Improving Source Address Selection">
+      <section title="Improving Source Address Selection" anchor="addrselimprovements">
         <t>
             Beyond the considerations in the previous section, source address
             selection and routing choice is key to improving host behavior in
@@ -892,6 +892,10 @@ recursive resolution result:
 
     <section anchor="log" title="Change Log">
       <t><list style="hanging">
+        <t hangText="March 2025 [-03]:"><list>
+        <t>2 new sections about source address selection</t>
+        <t>editorial fixes, updated references</t>
+        </list></t>
         <t hangText="October 2024 [-02]:"><list>
           <t>no changes</t>
         </list></t>
