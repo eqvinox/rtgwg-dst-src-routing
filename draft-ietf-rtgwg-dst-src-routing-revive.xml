@@ -39,7 +39,7 @@
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="std"
      submissionType="IETF"
-     docName="draft-ietf-rtgwg-dst-src-routing-revive-03"
+     docName="draft-ietf-rtgwg-dst-src-routing-revive-04"
      ipr="trust200902"
      consensus="true">
   <front>
@@ -893,6 +893,9 @@ recursive resolution result:
 
     <section anchor="log" title="Change Log">
       <t><list style="hanging">
+        <t hangText="September 2025 [-04]:"><list>
+        <t>no content changes (author metadata only)</t>
+        </list></t>
         <t hangText="March 2025 [-03]:"><list>
         <t>2 new sections about source address selection</t>
         <t>editorial fixes, updated references</t>
