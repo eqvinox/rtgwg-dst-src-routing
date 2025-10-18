@@ -278,7 +278,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
           multihomed PA enterprise setups without any changes,
           destination-source routing can also be used to correctly
           route services that assign their own prefixes to customers using
-          the particular service.  This is distinct from internet
+          the particular service.  This is distinct from Internet
           connectivity only in that it does not provide a default route.
           Applying destination-source routing, the entire routing domain
           is aware of the specific constraints of the routes involved.</t>
@@ -327,7 +327,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
         prefix of ::/0 and routes without source prefix <bcp14>MUST NOT</bcp14> be visible.
       </t>
       <t>For uniqueness considerations, the source prefix factors <bcp14>MUST</bcp14> be
-        taken into account for comparisons.  Two routes with identical
+        taken into account for comparisons.  Multiple routes with identical
         information except the source prefix <bcp14>MAY</bcp14> exist and <bcp14>MUST</bcp14> be installed
         and matched.</t>
       </section>
@@ -879,7 +879,7 @@ recursive resolution result:
       <t>This document itself is largely the result of discussions with Fred
         Baker and derives from <xref
           target="I-D.baker-ipv6-isis-dst-src-routing"/>.</t>
-      <t>Thanks to Chris Bowers, Jeffrey Haas, Ted Lemon, Acee Lindem,
+      <t>Thanks to Chris Bowers, Jeffrey Haas, Bob Hinden, Ted Lemon, Acee Lindem,
         Tony Przygienda, and Éric Vyncke for their input and review.</t>
       <t>The Linux kernel is providing an implementation of the behaviour
         described here since even before the document was started.</t>
