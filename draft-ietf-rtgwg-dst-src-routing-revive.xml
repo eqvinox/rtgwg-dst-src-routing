@@ -117,16 +117,10 @@
     <area>Routing</area>
     <workgroup>rtgwg</workgroup>
     <abstract>
-      <t>This note specifies using packets' source addresses in route lookups
-        as additional qualifier to be used in hop-by-hop routing decisions.
-        This applies to <xref target="RFC8200">IPv6</xref> in general with
-        specific considerations for routing protocol left for separate
-        documents.  There is nothing precluding similar operation in IPv4, but
-        this is not in scope of this document.
-      </t>
-      <t>Note that destination/source routing, source/destination routing,
-        SADR, source-specific routing, source-sensitive routing, S/D routing
-        and D/S routing are all used synonymously.</t>
+<t>
+This document specifies using packets' source addresses in route lookups as additional qualifier to be used in hop-by-hop routing decisions.
+The proposed mechanism applies to IPv6 [RFC8200] in general with specific considerations for routing protocols.
+</t>
     </abstract>
   </front>
 
