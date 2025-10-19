@@ -245,6 +245,27 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
           in direction HQ -> branch because destination is the same
           (branch network).</t>
 
+<figure title="Traffic Engineering Example Topology">
+          <artwork align="center">
+
+┌────────────────┐                ┌─────────────────┐   ┌───────────────┐
+│                │   route to     │                 │   │               │
+│                │ 2001:db8::/48  │      WAN        │   │               │
+│                │ ────────────►  │                 │   │               │
+│    BRANCH      │                │                 │   │      HQ       │
+│    OFFICE      ├──── link1 ─────│     route to    │   │               │
+│                │                │ 2001:db:b::/48  ├───┼               │
+│ 2001:db:b::/48 │                │  ◄────────────  │   │               │
+│                ├──── link2 ─────│                 │   │ 2001:db8::/48 │
+│                │                │                 │   │               │
+│                │ ────────────►  │                 │   │               │
+│                │    route to    │                 │   │               │
+│                │     ::/0       │                 │   │               │
+└────────────────┘                └─────────────────┘   └───────────────┘
+        </artwork>
+      </figure>
+
+
         <t>Source-destination routing provides an easy way to sort
           traffic going to the branch based on its source address.</t>
       </section>
