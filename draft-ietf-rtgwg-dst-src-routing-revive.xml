@@ -232,7 +232,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
         hosts, refer to <xref target="RFC8043"/>.</t>
       </section>
 
-      <section title="Degree of traffic engineering">
+      <section title="Enterprise Traffic Engineering">
         <t>Consider enterprise consisting of a headquarter (HQ) and
           branch offices. A branch office is connected to the
           enterprise HQ network via 2 links. For performance or
@@ -243,7 +243,10 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
           HQ routes pointing to another link. But destination routing
           does not provide an easy way to achieve traffic separation
           in direction HQ -> branch because destination is the same
-          (branch network).</t>
+          (branch network).
+For example, in the topology shown on the diagram below, the policy requires that the branch network uses link1 for communicatin with the HQ, and the link2 for the Internet traffic.
+However, the branch prefix (2001:db8:b::/48) needs to be advertized to the WAN over both links, so the WAN routers can choose either link for return traffic, sending flows from HQ via the link2 and Internet flows via link1, violating the desired policy.
+</t>
 
 <figure title="Traffic Engineering Example Topology">
           <artwork align="center">
@@ -267,7 +270,9 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
 
 
         <t>Source-destination routing provides an easy way to sort
-          traffic going to the branch based on its source address.</t>
+          traffic going to the branch based on its source address.
+Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while packets from all other sources are sent to link2.
+</t>
       </section>
 
       <section title="Distributed filtering based on source address">
