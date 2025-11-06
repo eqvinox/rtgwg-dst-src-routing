@@ -117,16 +117,10 @@
     <area>Routing</area>
     <workgroup>rtgwg</workgroup>
     <abstract>
-      <t>This note specifies using packets' source addresses in route lookups
-        as additional qualifier to be used in hop-by-hop routing decisions.
-        This applies to <xref target="RFC8200">IPv6</xref> in general with
-        specific considerations for routing protocol left for separate
-        documents.  There is nothing precluding similar operation in IPv4, but
-        this is not in scope of this document.
-      </t>
-      <t>Note that destination/source routing, source/destination routing,
-        SADR, source-specific routing, source-sensitive routing, S/D routing
-        and D/S routing are all used synonymously.</t>
+<t>
+This document specifies using packets' source addresses in route lookups as additional qualifier to be used in hop-by-hop routing decisions.
+The proposed mechanism applies to IPv6 [RFC8200] in general with specific considerations for routing protocols.
+</t>
     </abstract>
   </front>
 
@@ -238,7 +232,7 @@
         hosts, refer to <xref target="RFC8043"/>.</t>
       </section>
 
-      <section title="Degree of traffic engineering">
+      <section title="Enterprise Traffic Engineering">
         <t>Consider enterprise consisting of a headquarter (HQ) and
           branch offices. A branch office is connected to the
           enterprise HQ network via 2 links. For performance or
@@ -249,10 +243,36 @@
           HQ routes pointing to another link. But destination routing
           does not provide an easy way to achieve traffic separation
           in direction HQ -> branch because destination is the same
-          (branch network).</t>
+          (branch network).
+For example, in the topology shown on the diagram below, the policy requires that the branch network uses link1 for communicatin with the HQ, and the link2 for the Internet traffic.
+However, the branch prefix (2001:db8:b::/48) needs to be advertized to the WAN over both links, so the WAN routers can choose either link for return traffic, sending flows from HQ via the link2 and Internet flows via link1, violating the desired policy.
+</t>
+
+<figure title="Traffic Engineering Example Topology">
+          <artwork align="center">
+
+┌────────────────┐                ┌─────────────────┐   ┌───────────────┐
+│                │   route to     │                 │   │               │
+│                │ 2001:db8::/48  │      WAN        │   │               │
+│                │ ────────────►  │                 │   │               │
+│    BRANCH      │                │                 │   │      HQ       │
+│    OFFICE      ├──── link1 ─────│     route to    │   │               │
+│                │                │ 2001:db:b::/48  ├───┼               │
+│ 2001:db:b::/48 │                │  ◄────────────  │   │               │
+│                ├──── link2 ─────│                 │   │ 2001:db8::/48 │
+│                │                │                 │   │               │
+│                │ ────────────►  │                 │   │               │
+│                │    route to    │                 │   │               │
+│                │     ::/0       │                 │   │               │
+└────────────────┘                └─────────────────┘   └───────────────┘
+        </artwork>
+      </figure>
+
 
         <t>Source-destination routing provides an easy way to sort
-          traffic going to the branch based on its source address.</t>
+          traffic going to the branch based on its source address.
+Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while packets from all other sources are sent to link2.
+</t>
       </section>
 
       <section title="Distributed filtering based on source address">
@@ -284,7 +304,7 @@
           multihomed PA enterprise setups without any changes,
           destination-source routing can also be used to correctly
           route services that assign their own prefixes to customers using
-          the particular service.  This is distinct from internet
+          the particular service.  This is distinct from Internet
           connectivity only in that it does not provide a default route.
           Applying destination-source routing, the entire routing domain
           is aware of the specific constraints of the routes involved.</t>
@@ -333,7 +353,7 @@
         prefix of ::/0 and routes without source prefix <bcp14>MUST NOT</bcp14> be visible.
       </t>
       <t>For uniqueness considerations, the source prefix factors <bcp14>MUST</bcp14> be
-        taken into account for comparisons.  Two routes with identical
+        taken into account for comparisons.  Multiple routes with identical
         information except the source prefix <bcp14>MAY</bcp14> exist and <bcp14>MUST</bcp14> be installed
         and matched.</t>
       </section>
@@ -885,7 +905,7 @@ recursive resolution result:
       <t>This document itself is largely the result of discussions with Fred
         Baker and derives from <xref
           target="I-D.baker-ipv6-isis-dst-src-routing"/>.</t>
-      <t>Thanks to Chris Bowers, Jeffrey Haas, Ted Lemon, Acee Lindem,
+      <t>Thanks to Chris Bowers, Jeffrey Haas, Bob Hinden, Ted Lemon, Acee Lindem,
         Tony Przygienda, and Éric Vyncke for their input and review.</t>
       <t>The Linux kernel is providing an implementation of the behaviour
         described here since even before the document was started.</t>
