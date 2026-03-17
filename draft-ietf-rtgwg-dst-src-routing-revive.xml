@@ -871,11 +871,88 @@ recursive resolution result:
       <t>This document makes no requests to IANA.</t>
     </section>
 
+    <section anchor="Operational" title="Operational Considerations">
+      <section anchor="NetworkDesign" title="Network Design">
+        <t>While this document includes considerations for interoperability with
+          non-capable routers in the requirements discussed for specific routing
+          protocols to gain destination-source route support, it is still
+          <bcp14>RECOMMENDED</bcp14> that all of a routing domain's routers are
+            updated to support the capability.</t>
+        <t>A mix of destination-source route capable and incapable routers can
+          certainly be made to work, but implementation experience has shown
+          that the mechanisms for interoperation are the most bug-prone part
+          of this.  Equally, it is the most likely subject of misconfiguration.
+        </t>
+      </section>
+
+      <section anchor="Deployment" title="Deployment">
+        <t>Deploying destination-source routing disaggregates into 2 parts,
+          rolling out systems capable of performing it, and starting to use
+          actual destination-source routes.</t>
+        <t>Since destination-source capable routers behave identically to
+          non-capable routers when there are no destination-source routes
+          present, it is highly <bcp14>RECOMMENDED</bcp14> that operators
+          sequence this and only begin utilizing destination-source routers
+          after all routers in the network are capable of handling them.</t>
+        <t>This guidance is also relevant for networks designed to drop or
+          aggregate routes on some routers.  As with plain destination routes,
+          ill-considered configurations can create loops.  The introduction
+          of the source prefix as a factor emboldens this concern.
+        </t>
+        <t>A recommendation for vendors to enable or disable the feature
+          by default is not given here since it strongly depends on the
+          intended use of the device, and whether the feature consumes
+          resources or diminishes performance by just being enabled.</t>
+      </section>
+
+      <section anchor="Operations" title="Operations">
+        <t>To operate and verify correct operation of a destination-source-routing
+          network, the primary method of inspection is the route table view.
+          To aid usability for operators and lessen the risk of misunderstanding
+          state, implementations <bcp14>SHOULD</bcp14> show destination-source
+          routes along with plain destination routes, ideally visually colocated
+          with close, less specific destination-only routes.  It is also
+          <bcp14>RECOMMENDED</bcp14> for user interfaces to point out the
+          existence of more specific destination-source routes when the details
+          of plain destination routes are inspected.
+        </t>
+
+        <section anchor="ResourceConsumption" title="Resource Consumption">
+          <t>Destination-source routes, out of necessity, consume more routing
+            resources (e.g. TCAM, FIB/RIB memory) than routes without attached
+            source prefixes.  Vendors <bcp14>SHOULD</bcp14> clearly communicate
+            the size of this impact on specific systems.
+          </t>
+          <t>Operationally, for this reason, it is <bcp14>RECOMMENDED</bcp14>
+            to not use overly specific prefixes with destination-source routing.
+            At the time of creation of this document, destination and source
+            prefixes less or equally specific than /64 are believed to be fine,
+            anything longer (in particular host routes) may have an outsized
+            performance impact or resource consumption.  The most common
+            prefix lengths to be used are expected to lie in the range of
+            ISP to CPE allocations, i.e. loosely /48 to /64.
+          </t>
+          <t>Note that this recommendation is operational and not implementation
+            related.  To be compatible, all routers implementing
+            destination-source routing <bcp14>MUST</bcp14> still support all valid
+            prefix lengths, including /128, for both destination and source prefixes.
+          </t>
+        </section>
+      </section>
+    </section>
+
     <section anchor="Security" title="Security Considerations">
       <t>Systems operating under the principles of this document can have
         routes that are more specific than the previously most specific, i.e.
         host routes.  This can be a security concern if an operator was relying
         on the impossibility of hijacking such a route.</t>
+
+      <t>The resource consumption concerns noted in the Operational Considerations
+        section are also a security concern as resource exhaustion attacks.
+        The methods of limiting ingestion of destination-agnostic routes <bcp14>MUST</bcp14>
+        also be available for and applied to destination-source routes, with
+        potentially different parameters to account for the higher resource
+        usage.</t>
 
       <!-- from draft-baker-ipv6-dst-src-routing -->
       <t>While destination-source routing could be used as part of a security
