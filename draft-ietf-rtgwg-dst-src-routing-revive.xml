@@ -881,8 +881,9 @@ recursive resolution result:
         <t>A mix of destination-source route capable and incapable routers can
           certainly be made to work, but implementation experience has shown
           that the mechanisms for interoperation are the most bug-prone part
-          of this.  Equally, it is the most likely subject of misconfiguration.
-        </t>
+          of this.
+Furthermore, such heterogeneous deployments are significantly more complex to operate and troubleshoot; they also tend to be less stable due to a higher risk of misconfiguration and human error.
+</t>
       </section>
 
       <section anchor="Deployment" title="Deployment">
@@ -892,7 +893,7 @@ recursive resolution result:
         <t>Since destination-source capable routers behave identically to
           non-capable routers when there are no destination-source routes
           present, it is highly <bcp14>RECOMMENDED</bcp14> that operators
-          sequence this and only begin utilizing destination-source routers
+          sequence this and only begin utilizing destination-source routes
           after all routers in the network are capable of handling them.</t>
         <t>This guidance is also relevant for networks designed to drop or
           aggregate routes on some routers.  As with plain destination routes,
@@ -926,7 +927,7 @@ recursive resolution result:
           <t>Operationally, for this reason, it is <bcp14>RECOMMENDED</bcp14>
             to not use overly specific prefixes with destination-source routing.
             At the time of creation of this document, destination and source
-            prefixes less or equally specific than /64 are believed to be fine,
+            prefixes with prefix length shorter or equal /64 are believed to be fine,
             anything longer (in particular host routes) may have an outsized
             performance impact or resource consumption.  The most common
             prefix lengths to be used are expected to lie in the range of
