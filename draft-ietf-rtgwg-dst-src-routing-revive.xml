@@ -926,9 +926,8 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
           </t>
           <t>Operationally, for this reason, it is <bcp14>RECOMMENDED</bcp14>
             to not use overly specific prefixes with destination-source routing.
-            At the time of creation of this document, destination and source
-            prefixes with prefix length shorter or equal /64 are believed to be fine,
-            anything longer (in particular host routes) may have an outsized
+            An exact recommendation would depend on a lot of factors, but destination and source
+            prefixes longer than /64 are believed to be generally suspect in nature and may have an outsized
             performance impact or resource consumption.  The most common
             prefix lengths to be used are expected to lie in the range of
             ISP to CPE allocations, i.e. loosely /48 to /64.
