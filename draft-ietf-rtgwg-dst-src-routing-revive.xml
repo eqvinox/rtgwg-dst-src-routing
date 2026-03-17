@@ -179,7 +179,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
       <section title="Multihomed networks with provider assigned prefixes"
           anchor="multihome">
         <t>There are good reasons for networks to be multihomed - benefits of
-          doing this may include redundandy, better performance or faster
+          doing this may include redundancy, better performance or faster
           access to important resources (for example, video or cloud services)
           local to ISPs.</t>
         <t>However, in a range from smaller home networks to
@@ -223,7 +223,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
       <t>By assigning addresses from multiple prefixes each to end host
         (as a policy routing solution could do), the choice of uplink is
         left to host, including the option to choose multiple at once.
-        Destination-source routing provides the neccessary behaviour for
+        Destination-source routing provides the necessary behaviour for
         routers (e.g. R1 and R2 in above example) to forward packets to
         the appropriate exit.  It does so without requiring the manual
         configuration maintenance that policy routing would entail.</t>
@@ -554,7 +554,7 @@ A ⊂ B :=    Adst ⊂  Bdst
         <t>Recursive destination-source routes have additional
           complication in how source address range should be
           considered while finding destination-source route to resolve
-          recusion.</t>
+          recursion.</t>
 
         <t>There are several possible approaches:</t>
         <t><list style="numbers">
@@ -728,7 +728,7 @@ recursive resolution result:
         <t>
             Unfortunately, the functionality described by the text in rule 5.5
             is insufficient to make these scenarios work.  A source address
-            is choosen in context of a particular nexthop, but there is no
+            is chosen in context of a particular nexthop, but there is no
             mechanism preferring that nexthop for packets exchanged afterwards.
             <xref target="RFC8028"/> is intended to address this and makes
             several recommendations involving use of the source address.
@@ -861,7 +861,7 @@ recursive resolution result:
         <t>The latter approach is facilitated by Multi-Topology extensions to
           the respective protocols.  These extensions provide a way to both
           isolate D/S routing information and perform the separate SPF
-          calculation.  Note that it is not neccessary to use multiple
+          calculation.  Note that it is not necessary to use multiple
           topologies for distinct source prefixes;  only a single additional
           topology encompassing all D/S-capable routers is sufficient.</t>
       </section>
@@ -960,7 +960,7 @@ recursive resolution result:
                use cases</t>
             <t>added section on alternative lookup algorithm</t>
             <t>added section on requirement for dynamic routing
-              protocols dessiminating destination-source informaton</t>
+              protocols disseminating destination-source informaton</t>
             </list></t>
           <t hangText="October 2015 [-00]:">
             renamed to draft-ietf-rtgwg-dst-src-routing-00, no content changes
@@ -1036,7 +1036,7 @@ recursive resolution result:
               D' otherwise) to a less specific destination.  Call this D'.</t>
 
             <t>For all routes (D', S'), i.e. all source prefixes S' under that
-              destiation prefix, install a copy (D, S') if and only if S'
+              destination prefix, install a copy (D, S') if and only if S'
               covers some source prefix that isn't covered yet.  (In terms of
               set theory, S' cut by all existing S under D is not empty.)
             </t>
