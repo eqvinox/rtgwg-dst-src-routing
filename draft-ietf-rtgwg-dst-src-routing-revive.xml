@@ -982,13 +982,21 @@ recursive resolution result:
       <t>This document itself is largely the result of discussions with Fred
         Baker and derives from <xref
           target="I-D.baker-ipv6-isis-dst-src-routing"/>.</t>
-      <t>Thanks to Chris Bowers, Jeffrey Haas, Bob Hinden, Ted Lemon, Acee Lindem,
-        Tony Przygienda, and Éric Vyncke for their input and review.</t>
+      <t>Thanks to Chris Bowers, Mach Chen, Linda Dunbar, Jeffrey Haas, Bob Hinden, Ted Lemon, Acee Lindem,
+        Jacqueline McCall, Tony Przygienda, and Éric Vyncke for their input and review.</t>
       <t>The Linux kernel is providing an implementation of the behavior
         described here since even before the document was started.</t>
     </section>
 
     <section anchor="log" title="Change Log">
+      <t><list style="hanging">
+        <t hangText="March 2026 [-05]:"><list>
+        <t>address large chunk of directorate review comments (not all yet):</t>
+        <t>extended explainer re. traffic engineering scenario, new diagram</t>
+        <t>completely new Operational Considerations section</t>
+        <t>bunch of spelling fixes</t>
+        <t>6724 reference is now normative</t>
+        </list></t>
       <t><list style="hanging">
         <t hangText="September 2025 [-04]:"><list>
         <t>no content changes (author metadata only)</t>
