@@ -128,7 +128,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
     <section title="Introduction">
       <t>Both <xref target="RFC0791">IPv4</xref> and
         <xref target="RFC8200">IPv6</xref> architectures specify that
-        determination of the outgoing next-hop for packet forwarding is based
+        determination of the outgoing nexthop for packet forwarding is based
         solely on the destination address contained in the packet header. There
         exists class of network design problems which require packet forwarding
         to consider more than just the destination IP address (see <xref
@@ -214,7 +214,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
         prefix can usually not be expected to remain the same.</t>
 
       <t>In the legacy IPv4 world, NAT or policy routing would be used to
-        produce correct behaviour.  These are not desirable solutions:  all
+        produce correct behavior.  These are not desirable solutions:  all
         variants of NAT, even the reasonably constrained NPT, break end-to-end
         connectivity (and may restrict concurrent use of
         parallel paths.)  Policy routing requires a sufficiently skilled
@@ -223,7 +223,7 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
       <t>By assigning addresses from multiple prefixes each to end host
         (as a policy routing solution could do), the choice of uplink is
         left to host, including the option to choose multiple at once.
-        Destination-source routing provides the necessary behaviour for
+        Destination-source routing provides the necessary behavior for
         routers (e.g. R1 and R2 in above example) to forward packets to
         the appropriate exit.  It does so without requiring the manual
         configuration maintenance that policy routing would entail.</t>
@@ -300,7 +300,7 @@ Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while pack
       </section>
 
       <section title="Walled-garden Enterprise services">
-        <t>Apart from transfering from multihomed personal networks to
+        <t>Apart from transferring from multihomed personal networks to
           multihomed PA enterprise setups without any changes,
           destination-source routing can also be used to correctly
           route services that assign their own prefixes to customers using
@@ -319,7 +319,7 @@ Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while pack
       <section title="Information Source for Neighbor Management">
         <t>Having information on source address restrictions for routes
           distributed, routers can rely on this additional information to
-          improve their behaviour towards hosts connected to them.  This
+          improve their behavior towards hosts connected to them.  This
           specifically includes IPv6 Router Advertisements, which is described
           in <xref target="RFC8028"/> and <xref target="RFC8475"/>.</t>
       </section>
@@ -349,7 +349,7 @@ Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while pack
         prefix, with ::/0 as default value for entries installed without a
         specified source prefix.  This need not be implemented in this
         particular way, however the system <bcp14>MUST</bcp14> behave exactly as if it were.
-        In particular, a difference in behaviour between routes with a source
+        In particular, a difference in behavior between routes with a source
         prefix of ::/0 and routes without source prefix <bcp14>MUST NOT</bcp14> be visible.
       </t>
       <t>For uniqueness considerations, the source prefix factors <bcp14>MUST</bcp14> be
@@ -360,7 +360,7 @@ Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while pack
 
       <section title="Lookup ordering and disambiguation" anchor="deflookup">
         <t>When a router is making packet forwarding decision, that
-          is consulting its routing table in order to determine next-hop to
+          is consulting its routing table in order to determine nexthop to
           forward the packet to, it will use information from packet's header
           to look up best matching route from the routing table. This section
           describes lookup into the destination-source routing table.</t>
@@ -478,17 +478,17 @@ A ⊂ B :=    Adst ⊂  Bdst
         <t>There are 3 possible approaches to avoid looping condition:</t>
 
         <t><list style="numbers">
-            <t>Guarantee that next-hop gateway of a destination-source
+            <t>Guarantee that nexthop gateway of a destination-source
               route supports destination-source routing, for example
               calculate an alternate topology including only routers
               that support destination-source routing architecture</t>
 
-            <t>If next-hop gateway is not aware of destination-source
+            <t>If nexthop gateway is not aware of destination-source
               routing then a destination-source path can lead to it
-              only if next-hop router is 'closer' to the destination
+              only if nexthop router is 'closer' to the destination
               in terms of protocol's routing metric; important
               particular case of the rule is if destination-only
-              routing is pointing to the same next-hop gateway</t>
+              routing is pointing to the same nexthop gateway</t>
 
             <t>Discard the packet (i.e. treat destination-source route
               as unreachable)</t>
@@ -502,7 +502,7 @@ A ⊂ B :=    Adst ⊂  Bdst
           network (<xref target="multihome"/>), both routers R1 and R2
           will have default static routes pointing to ISPs.</t>
 
-        <t>Above considerations require a knowledge of the next-hop
+        <t>Above considerations require a knowledge of the nexthop
           router's capabilities. For routing protocols based on
           hop-by-hop flooding (<xref target="RFC2080">RIP</xref>,
           <xref target="RFC4271">BGP</xref>), knowing the peer's
@@ -544,7 +544,7 @@ A ⊂ B :=    Adst ⊂  Bdst
 
       <section title="Recursive Route Lookups" anchor="recurs">
         <t>Recursive routes provide indirect path information where
-          instead of supplying the next-hop directly they specify that next-hop
+          instead of supplying the nexthop directly they specify that nexthop
           information must be taken from another route in the same routing
           table. It is said that one route 'recurses' via another route which
           is 'resolving' recursion. Recursive routes may either be carried by
@@ -649,7 +649,7 @@ recursive resolution result:
           ignored for Multicast RPF lookups.</t>
       </section>
       <section title="Testing for Connectivity Availability">
-        <t>There are situations where systems' behaviour depends on the fact
+        <t>There are situations where systems' behavior depends on the fact
           whether "connectivity" is available in a broad sense.  These systems
           may have previously tested for the existence of a default route
           in the routing table.</t>
@@ -984,7 +984,7 @@ recursive resolution result:
           target="I-D.baker-ipv6-isis-dst-src-routing"/>.</t>
       <t>Thanks to Chris Bowers, Jeffrey Haas, Bob Hinden, Ted Lemon, Acee Lindem,
         Tony Przygienda, and Éric Vyncke for their input and review.</t>
-      <t>The Linux kernel is providing an implementation of the behaviour
+      <t>The Linux kernel is providing an implementation of the behavior
         described here since even before the document was started.</t>
     </section>
 
