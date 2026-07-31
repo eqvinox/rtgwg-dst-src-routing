@@ -176,6 +176,12 @@ The proposed mechanism applies to IPv6 [RFC8200] in general with specific consid
     </section>
 
     <section title="Use cases" anchor="usecases">
+    <t>
+The proposed solution is designed to address specific use cases primarily observed in enterprise and access networks,
+where traffic originating within the network must be routed differently based on the source address.
+At the time of writing, large transit networks are not anticipated to benefit from this solution.
+Destination-source routing is not intended to supersede traditional destination-based routing.
+    </t> 
       <section title="Multihomed networks with provider assigned prefixes"
           anchor="multihome">
         <t>There are good reasons for networks to be multihomed - benefits of
