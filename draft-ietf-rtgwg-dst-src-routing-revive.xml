@@ -681,7 +681,7 @@ recursive resolution result:
             for outgoing connections.   While the application establishing
             the connection can take over this function (i.e. binding a socket
             to a source address), this is generally performed by the system
-            following <xref target="RFC6724"/>.
+            following <xref target="RFC6724"/> and <xref target="I-D.ietf-6man-rfc6724-update"/>.
         </t>
         <t>
             Critically, selecting a source address is done after looking up a
@@ -723,7 +723,8 @@ recursive resolution result:
             the presence of multiple routers, prefixes or interfaces.  Rule
             5.5 as noted in <xref target="RFC6724" section="5"/>, and
             <xref target="RFC8028"/> (note <xref target="RFC8028-ERRATA7009"/>)
-            are at the heart of this.
+            are at the heart of this. <xref target="I-D.ietf-6man-rfc6724-update"/>
+            updates <xref target="RFC6724"/>, making Rule 5.5 support a mandatory for hosts.
         </t>
         <t>
             Unfortunately, the functionality described by the text in rule 5.5
@@ -741,7 +742,8 @@ recursive resolution result:
         </t>
         <t>
             Destination-source routing is explicitly applicable to hosts, and
-            in the context of fully implementing <xref target="RFC6724"/> and
+            in the context of fully implementing <xref target="RFC6724"/>,
+            <xref target="I-D.ietf-6man-rfc6724-update"/> and
             <xref target="RFC8028"/>, it is <bcp14>RECOMMENDED</bcp14> that
             end hosts in fact implement destination-source routing.
         </t>
@@ -992,6 +994,7 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
       <t><list style="hanging">
         <t hangText="August 2026 [-06]:"><list>
         <t>Using 'destination-source' consistently, removing 'source-destinaiton', 'dst-src'.</t>
+        <t>Adding some text about <xref target="I-D.ietf-6man-rfc6724-update"/> and making it a normative reference.</t>
         </list></t>
         <t hangText="March 2026 [-05]:"><list>
         <t>address large chunk of directorate review comments (not all yet):</t>
@@ -1065,6 +1068,7 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6724.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8200.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-6man-rfc6724-update.xml"/>
     </references>
 
     <references title="Informative References">
