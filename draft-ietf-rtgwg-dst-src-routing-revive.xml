@@ -275,28 +275,29 @@ Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while pack
 </t>
       </section>
 
-      <section title="Distributed filtering based on source address">
-        <t>A network has untrusted zone and secure one (and both zones
-          comprise many links and routers). Computers from the secure
-          zone need to be able to communicate with some selected hosts
-          in the untrusted zone. The secure zone is protected by a
-          firewall. The firewall is configured to check that packets
-          arriving from the untrusted zone have destination address in
-          the range of secure zone and source address of trusted
-          hosts in the untrusted zone. This works but leaves the
-          firewall open to DDOS attack from outside.</t>
-
-        <t>If routers in the untrusted zone are configured with
-          destination-source routing (and, possibly, unicast RPF
-          check) and receive via dynamic routing protocol routes
-          &lt;destination: secure zone; source: trusted host in the
-          untrusted zone&gt; then DDOS attack is dropped by routers on
-          the edge of destination-source routing area. DDOS attack
-          does not even reach the firewall whose resources are freed
-          to deal with Deep Packet Inspection. On the other hand,
-          security policy is managed in a single point - on a router
-          injecting relevant destination-source routes into the
-          dynamic routing protocol.</t>
+      <section title="Enhanced Remote Triggered Black Hole">
+        <t>
+Remote Triggered Black Hole (RTBH) filtering utilizes BGP to block IP traffic to specific destinations
+(<xref target="RFC3882"/>) or from specific sources  (<xref target="RFC5635"/>).
+However, when RTBH is applied, all traffic to the affected destination (or from the affected source) is dropped.
+In contrast, destination-source routing allows operators to selectively discard traffic for specific destination-source pairs.
+</t>
+<t>
+For example, consider a network using the 2001:db8::/32 netblock with two user-facing services: Service A
+(using addresses from 2001:db8:a::/48) and Service B (using addresses from 2001:db8:b::/48).
+Destination-source routing provides additional flexibility to discard traffic selectively, as illustrated in the scenarios below:
+</t>
+<texttable style="headers">
+          <ttcol>Objective</ttcol>
+          <ttcol>Route Configuration</ttcol>
+          <ttcol>Resulting Behavior</ttcol>
+          <c>Block a specific external source</c>
+          <c>Create a destination-source route [destination 2001:db8:a::/48, source 3fff::/32] with a discard next-hop.</c>
+          <c>Traffic from 3fff::/32 to Service A is dropped, without impacting any other flows.</c>
+          <c>Restrict service access to internal sources</c>
+          <c>Create a valid destination-source route [destination 2001:db8:b::/48, source 2001:db8::/32] (with a non-discard next-hop), combined with traditional destination-based RTBH for 2001:db8:b::/48.</c>
+          <c>All traffic to Service B is dropped, except for traffic originating internally from 2001:db8::/32.</c>
+</texttable>
       </section>
 
       <section title="Walled-garden Enterprise services">
@@ -1075,9 +1076,11 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.0791.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2080.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2827.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3882.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4271.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5308.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5340.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.5635.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8028.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8043.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8475.xml"/>
