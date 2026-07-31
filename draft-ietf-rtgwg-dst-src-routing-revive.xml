@@ -269,7 +269,7 @@ However, the branch prefix (2001:db8:b::/48) needs to be advertized to the WAN o
       </figure>
 
 
-        <t>Source-destination routing provides an easy way to sort
+        <t>Destination-source routing provides an easy way to sort
           traffic going to the branch based on its source address.
 Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while packets from all other sources are sent to link2.
 </t>
@@ -1155,7 +1155,7 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
 
         <t>After destination-source routing information has been
           collected, one FIB table is created for each source range
-          including the default range ::/0. Source-destination routes
+          including the default range ::/0. Destination-source routes
           then replicated into each destination-only FIB table whose
           associated source address range is a subset of route's
           source range. Note that this rule means routes with default
