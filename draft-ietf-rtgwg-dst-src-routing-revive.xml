@@ -819,20 +819,20 @@ recursive resolution result:
       <section title="Interoperability in Distance-Vector Protocols" anchor="distvector">
         <t>Distance-Vector routing protocols (BGP, BABEL), operating on
           a hop-by-hop basis, can address interoperability and migration
-          concerns on that level.  With routing information being flooded in
+          concerns on that level.  With routing information being propagated in
           the reverse direction of traffic being forwarded using that
-          information, a hop that floods is the same hop that forwards.</t>
+          information, a hop that propagates is the same hop that forwards.</t>
         <t>This makes dealing with destination/source-unaware routers easy
           if destination/source routes are made to be ignored by such unaware
-          routers, and flooding of such routes is inhibited.</t>
+          routers, and propagating of such routes is inhibited.</t>
         <t>If destination-source routes are discarded by non-destination-source routers, destination-source routers will
           not receive non-working routes and can select from other available
           working destination-source routes.</t>
-        <t>Note that for this to work, non-destination-source routers <bcp14>MUST NOT</bcp14> flood destination-source
+        <t>Note that for this to work, non-destination-source routers <bcp14>MUST NOT</bcp14> propagate destination-source
           routing information.  This can be achieved in 2 ways:
           <list style="numbers">
             <t>Using some preexisting encoding to signal non-destination-source routers to not
-              flood these particular routes</t>
+              advertize these particular routes</t>
             <t>Ignoring flooded destination-source information on destination-source routers by having them
               detect that they received it from a non-destination-source router (e.g. using
               some capability signalling to identify non-destination-source routers.)  This
@@ -841,7 +841,7 @@ recursive resolution result:
           </list>
         </t>
         <t>Also note that the considerations in this section only apply if data
-          path and flooding path are congruent.</t>
+          path and route propagation path are congruent.</t>
       </section>
       <section title="Interoperability in Link-State Protocols" anchor="linkstate">
         <t>For Link-State routing protocols (OSPF, IS-IS), there is no relation
