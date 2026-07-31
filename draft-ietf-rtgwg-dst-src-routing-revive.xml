@@ -505,8 +505,7 @@ A ⊂ B :=    Adst ⊂  Bdst
 
         <t>Above considerations require a knowledge of the nexthop
           router's capabilities. For routing protocols based on
-          hop-by-hop flooding (<xref target="RFC2080">RIP</xref>,
-          <xref target="RFC4271">BGP</xref>), knowing the peer's
+          hop-by-hop flooding such as <xref target="RFC4271">BGP</xref>) knowing the peer's
           capabilities is sufficient. Information about if peer supports
           destination-source routing can either be negotiated
           explicitly or simply be deduced from the fact that systems
@@ -818,7 +817,7 @@ recursive resolution result:
       </figure>
 
       <section title="Interoperability in Distance-Vector Protocols" anchor="distvector">
-        <t>Distance-Vector routing protocols (BGP, RIPng, BABEL), operating on
+        <t>Distance-Vector routing protocols (BGP, BABEL), operating on
           a hop-by-hop basis, can address interoperability and migration
           concerns on that level.  With routing information being flooded in
           the reverse direction of traffic being forwarded using that
