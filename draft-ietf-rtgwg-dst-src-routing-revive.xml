@@ -635,17 +635,17 @@ recursive resolution result:
         </section>
       </section>
       <section title="Unicast Reverse Path Filtering">
-        <t>Unicast reverse path filtering <bcp14>MUST</bcp14> use dst-src routes analog to its
+        <t>Unicast reverse path filtering <bcp14>MUST</bcp14> use destination-source routes analog to its
           usage of destination-only routes.  However, the system <bcp14>MAY</bcp14> match
           either only incoming source against routes' destinations, or it <bcp14>MAY</bcp14>
           match source and destination against routes' destination and
-          source.  It <bcp14>MUST NOT</bcp14> ignore dst-src routes on uRPF checks.</t>
+          source.  It <bcp14>MUST NOT</bcp14> ignore destination-source routes on uRPF checks.</t>
       </section>
       <section title="Multicast Reverse Path Forwarding">
         <t>Multicast Reverse Path Lookups are used to find paths towards the
           (known) sender of multicast packets.  Since the destination of these
           packets is the multicast group, it cannot be matched against the
-          source part of a dst-src route.  Therefore, dst-src routes <bcp14>MUST</bcp14> be
+          source part of a destination-source route.  Therefore, destination-source routes <bcp14>MUST</bcp14> be
           ignored for Multicast RPF lookups.</t>
       </section>
       <section title="Testing for Connectivity Availability">
@@ -965,7 +965,7 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
     </section>
 
     <section anchor="Privacy" title="Privacy Considerations">
-      <t>If a host's addresses are known, injecting a dst-src route allows
+      <t>If a host's addresses are known, injecting a destination-source route allows
         isolation of traffic from that host, which may compromise privacy.
         However, this requires access to the routing system.  As with similar
         problems with the destination only, defending against it is left to
