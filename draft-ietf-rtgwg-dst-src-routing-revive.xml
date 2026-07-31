@@ -990,6 +990,9 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
 
     <section anchor="log" title="Change Log">
       <t><list style="hanging">
+        <t hangText="August 2026 [-06]:"><list>
+        <t>Using 'destination-source' consistently, removing 'source-destinaiton', 'dst-src'.</t>
+        </list></t>
         <t hangText="March 2026 [-05]:"><list>
         <t>address large chunk of directorate review comments (not all yet):</t>
         <t>extended explainer re. traffic engineering scenario, new diagram</t>
