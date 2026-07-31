@@ -310,7 +310,7 @@ Packets from 2001:db8::/48 to 2001:db:b::/48 can be routed via link1, while pack
           is aware of the specific constraints of the routes involved.</t>
         <t>Additionally, if the walled-garden's destination prefix is
           advertised as blackhole route, this ensures that communication
-          with the service will only be routed using the specific D/S route,
+          with the service will only be routed using the specific destination-source route,
           never leaking onto unintended paths like a default route.</t>
         <t>This is very similar to firewall/filtering functionality, except
           the feature is distributed onto routers.</t>
@@ -825,17 +825,17 @@ recursive resolution result:
         <t>This makes dealing with destination/source-unaware routers easy
           if destination/source routes are made to be ignored by such unaware
           routers, and flooding of such routes is inhibited.</t>
-        <t>If D/S routes are discarded by non-D/S routers, D/S routers will
+        <t>If destination-source routes are discarded by non-destination-source routers, destination-source routers will
           not receive non-working routes and can select from other available
-          working D/S routes.</t>
-        <t>Note that for this to work, non-D/S routers <bcp14>MUST NOT</bcp14> flood D/S
+          working destination-source routes.</t>
+        <t>Note that for this to work, non-destination-source routers <bcp14>MUST NOT</bcp14> flood destination-source
           routing information.  This can be achieved in 2 ways:
           <list style="numbers">
-            <t>Using some preexisting encoding to signal non-D/S routers to not
+            <t>Using some preexisting encoding to signal non-destination-source routers to not
               flood these particular routes</t>
-            <t>Ignoring flooded D/S information on D/S routers by having them
-              detect that they received it from a non-D/S router (e.g. using
-              some capability signalling to identify non-D/S routers.)  This
+            <t>Ignoring flooded destination-source information on destination-source routers by having them
+              detect that they received it from a non-destination-source router (e.g. using
+              some capability signalling to identify non-destination-source routers.)  This
               handling likely needs to be performed on a level of same-link
               neighborships.</t>
           </list>
@@ -848,24 +848,24 @@ recursive resolution result:
           between route flooding and forwarding.  Instead, forwarding decisions
           are based on shortest-path calculation on top of the received
           topology information.</t>
-        <t>For a D/S router to avoid loops, there are again two choices
+        <t>For a destination-source router to avoid loops, there are again two choices
           available:
           <list style="numbers">
-            <t>Detect that forwarding for a D/S route transits over a non-D/S
+            <t>Detect that forwarding for a destination-source route transits over a non-destination-source
               router and convert the route into a blackhole route to replace
               looping with blackholing.  This obviously impacts
               connectivity.</t>
             <t>Perform separate SPF calculations using only the subset of
-              D/S-capable routers; thus D/S routers can forward D/S-routed
+              destination-source-capable routers; thus destination-source routers can forward destination-source-routed
               packets as long as they stay in contiguous islands.</t>
           </list>
         </t>
         <t>The latter approach is facilitated by Multi-Topology extensions to
           the respective protocols.  These extensions provide a way to both
-          isolate D/S routing information and perform the separate SPF
+          isolate destination-source routing information and perform the separate SPF
           calculation.  Note that it is not necessary to use multiple
           topologies for distinct source prefixes;  only a single additional
-          topology encompassing all D/S-capable routers is sufficient.</t>
+          topology encompassing all destination-source-capable routers is sufficient.</t>
       </section>
     </section>
 
