@@ -398,6 +398,11 @@ A ⊂ B :=    Adst ⊂  Bdst
           this effect in TXT and HTML outputs, but not PDF.  Any efforts
           to improve this formatting are much appreciated.</cref></t>
         </figure>
+        <t>While efficient longest-prefix matching is subject to academic
+          research and proprietary implementation optimizations, some general
+          notes on the expected cost of this lookup behavior can be found in
+          <xref target="costs"/>.
+        </t>
       </section>
 
       <section title="Ordering Rationale">
@@ -1114,6 +1119,87 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
       </reference>
     </references>
 
+    <section title="Expected costs and performance impact" anchor="costs">
+      <t>Please note that this section cannot be assumed to be applicable to
+        any specific implementation and is intended solely as best-effort
+        reference.  The impact of destination/source routing on a given
+        implementation can only be established by carefully reviewing that
+        implementation.</t>
+      <section title="Incrementally progressing (trie-like) implementations" anchor="costs_incremental">
+        <t>Any implementation of destination/source routing based on a
+          tree / trie can always be adjusted to return a destination/source
+          lookup result in a single pass without added passes to handle the
+          required continuation to less specific destination prefixes.  This
+          is done by, for each destination prefix in existence in the table,
+          adding the result of that continuation as a "synthetic" entry
+          for that destination prefix and the ::/0 source prefix.  The
+          approach is described in <xref target="nobacktrack"/> and
+          applicable to any lookup method that progresses by one or more
+          bits at a time.
+        </t>
+        <t>The cost of destination/source routes for such tree based
+          implementations thus is a higher worst-case constant number of bits
+          that may need to be evaluated (256 instead of 128) as well as
+          higher memory and cache consumption for the added source data.
+        </t>
+      </section>
+      <section title="Parallel lookup tables (hardware)" anchor="costs_table">
+        <t>Hardware implementations may commonly either follow the progressive
+          pattern outlined in the previous section (with the same costs), or
+          use parallel-lookup table structures.  For such table-based
+          approaches, destination/source routing requires a higher cap of total
+          information used to establish a match (again, 256 bits instead of
+          128).  In some unfortunate cases this will simply be impossible to do
+          in hardware, and fallback mechanisms may be far too slow to produce
+          useful results.  However, lots of implementations can already match
+          on source addresses for purposes of filtering/ACLs or policy
+          routing.  <xref target="altlookup"/> might be useful in utilizing
+          such resources for destination/source routing.
+        </t>
+        <t>If these implementations support matching on packets' source
+          addresses, the resulting cost will likely be a higher consumption
+          of (a fixed total of) match table entries.  Setting up a
+          destination/source route may in some implementations also require the
+          use of "chaining" of more than one entry (one for the destination
+          and one for the source, with control bits set such that both must
+          match), in which case a destination/source route will consume twice
+          as much table resources as a plain destination route.
+          Additionally, the total number of routes is likely to be higher
+          when destination/source routing is in use.  Lookup speed would
+          normally not be affected by any of these factors, so the cost of
+          destination/source routing becomes that of a lower scale ceiling.
+        </t>
+      </section>
+    </section>
+    <!--
+      (equi: longer version of the above, but feels a bit excessive & also a
+      little speculative.  I've left it in here for reference.)
+    <section title="Hardware lookup cost" anchor="cost">
+      <t>A common implementation of IP packet forwarding in hardware
+        consists of a table with a fixed number entries, each of which can
+        be configured to match specific bits from packets against data in
+        the entry, while applying a mask (for prefix length).  Multiple
+        entries may match (e.g. a default route and a more specific locally
+        attached network), which is handled by applying a defined
+        precedence between entries.  This precedence is not necessarily
+        (or normally) related to the concept of "more specific" routes,
+        rather the ordering of entries commonly defines which will take
+        precedence.</t>
+      <t>In such a design, with the caveat that source addresses need be
+        configurable as data to match, the lookup cost of
+        destination/source routes is no different from that of plain
+        destination routes.  However, the total number of routes will
+        likely be higher when destination/source routing is in use,
+        consuming more entries of these tables.</t>
+      <t>Additionally, the total size of data that can be matched with an
+        entry tends to be limited, and matching the source address may
+        require "chaining" multiple entries, thus consuming more than one
+        entry for a destination/source route.  In the worst case, a limit
+        on the total amount of matchable information in the packet may
+        be hit, which may make destination/source routes incompatible with
+        features like layer 4 port number inspection for QoS purposes.</t>
+    </section>
+    -->
     <section title="Implementation Options">
       <section title="Pre-expanded 2-step lookup without backtracking"
           anchor="nobacktrack">
