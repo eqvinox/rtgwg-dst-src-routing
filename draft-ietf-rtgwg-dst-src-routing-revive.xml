@@ -647,10 +647,62 @@ recursive resolution result:
       </section>
       <section title="Multicast Reverse Path Forwarding">
         <t>Multicast Reverse Path Lookups are used to find paths towards the
-          (known) sender of multicast packets.  Since the destination of these
-          packets is the multicast group, it cannot be matched against the
-          source part of a destination-source route.  Therefore, destination-source routes <bcp14>MUST</bcp14> be
-          ignored for Multicast RPF lookups.</t>
+          (known) sender of multicast packets.  The multicast source (S of the
+          S,G tuple) is used as the destination part of the route lookup.
+          The multicast group G would slot into the source part of the lookup.
+          There are multiple ways of handling this situation:
+          <ul>
+            <li>if such routes are signaled/provided in some manner, nothing
+              precludes maintaining routes with a unicast destination prefix
+              and a multicast "source" prefix, and a router <bcp14>MAY</bcp14> fill the lookup
+              source address with the multicast group in order to hit these
+              routes in the course of multicast RPF lookups.
+              However, such routes <bcp14>MUST NOT</bcp14> be used in the unicast forwarding
+              functions of the router, and <bcp14>MUST NOT</bcp14> result in a
+              waste of resources.  One specific case to highlight here is a
+              setup with a (D=::/0, S=ff00::/8) route that directs all
+              multicast RPF in some direction.</li>
+            <li>a router <bcp14>MAY</bcp14> implement a function that maps some range of
+              multicast group addresses to some route source address
+              to be used in lookups.  This effectively associates multicast
+              groups with an unicast "receiver" address and converts a given
+              multicast (S, G) to (D=S, S=map(G)) for lookup.  Similar to
+              the previous option, a case to highlight is a singlular
+              "map(ff00::/8)=S" rule applied to all multicast RPF lookups
+              giving direct-all behavior.</li>
+            <li>multicast routers <bcp14>MAY</bcp14> provide an option to use (D=S, S=::)
+              as lookup input (the :: source address may also be used during
+              source address selection as described in
+              <xref target="addrselneeds"/>).</li>
+            <li>all routers implementing destination/source routing and
+              multicast routing <bcp14>MUST</bcp14> support performing Multicast RPF lookups
+              with a S=::/0 value (or "no source", if implemented as such).
+              This results in the same behavior as a non-destination/source
+              router will exhibit and guarantees interoperability.  Note that
+              this is not identical to using S=:: (address, effective /128)
+              since a destination/source route covering that address may exist.
+              If a system's multicast RPF function is designed to deal only
+              with addresses, not prefixes (and has no "no source" option),
+              the system <bcp14>MAY</bcp14> use some nonzero sentinel address as
+              source if and only if it can guarantee that no
+              destination/source route will ever result in a match for that
+              sentinel address, and the usage of the sentinel address <bcp14>MUST NOT</bcp14>
+              interfere with unicast routing.  (The ::1 loopback address <bcp14>MAY</bcp14>
+              be used to implement this as it is invalid in any case to forward
+              traffic with that address as source or destination.)  However,
+              even "odd" routes like (D=::/0,S=::/64) <bcp14>MUST NOT</bcp14> be considered
+              for these lookups as this would diverge from
+              non-destination/source routing.
+            </li>
+          </ul>
+          The applicability and interactions of destination/source routing with
+          multicast routing are likely subject of further work.  Implementers
+          are advised to check for updates and/or seek IETF input before
+          proceeding.  The general use case as well as specific concepts of
+          associated upstream and takeover/switching from
+          <xref target="I-D.ietf-pim-multipath-igmpmldproxy"/>
+          are closely related with the "map(G)" outlined above.
+        </t>
       </section>
       <section title="Testing for Connectivity Availability">
         <t>There are situations where systems' behavior depends on the fact
@@ -1091,6 +1143,7 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8966.xml"/>
       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.troan-homenet-sadr.xml"/>
       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.baker-ipv6-isis-dst-src-routing"/>
+      <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-pim-multipath-igmpmldproxy"/>
       <reference anchor="hal-00947234v1" target="https://hal-univ-diderot.archives-ouvertes.fr/hal-00947234v1">
         <front>
           <title>Source-sensitive routing</title>
