@@ -1149,7 +1149,7 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
           the result that backtracking would give.  This eliminates
           backtracking and provides constant 2 lookup cost (after exactly one
           destination longest-match, the source longest-match will provide the
-          final, correct result;  any no-match is a final no-match/).</t>
+          final, correct result;  any no-match is a final no-match).</t>
       </section>
 
       <section title="Translation to Multi-FIB (Policy Routing) perspective"
