@@ -1283,9 +1283,9 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
       predates pretty much all other work on this - is cited in the
       acknowledgements section.  The CONFIG_IPV6_SUBTREES setting enables the
       code.</t>
-<t>
-The destination-source routing is also implemented in FRR and babeld.
-</t>
+    <t>
+      Destination-source routing is also implemented in FRRouting and babeld.
+    </t>
     <t>The destination/source routing has been implemented and tested under an experiment network 
     with four routers that supports both the new routing and forwarding plane. China Education and Research Network (CERNET) 
     has deployed 20 upgraded destination/source routers recently.</t>
