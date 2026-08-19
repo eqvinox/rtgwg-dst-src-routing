@@ -525,6 +525,35 @@ A ⊂ B :=    Adst ⊂  Bdst
           routing.</t>
       </section>
 
+      <section title="Incremental and/or partial deployments" anchor="partial">
+        <t>The considerations for incrementally or partially deploying
+          destination/source routing are identical to the considerations for
+          keeping the network free of loops, discussed in the
+          <xref target="loopfree">previous section</xref>.</t>
+        <t>It is noteworthy to point out that a destination/source capable
+          router that has no destination/source routes installed will behave
+          exactly the same as a plain destination based router.  As a result
+          of this, a destination/source router SHOULD NOT have a
+          "compatibility mode" switch controlling the router's fundamental
+          forwarding behavior -- it simply supports destination/source routes,
+          if there are any.  The main reason to break with this
+          approach is if a system has some lower resource consumption or
+          cost in a "plain destination routing only mode", and cannot be
+          reasonably switched into/out of that mode automatically on
+          addition/removal of the first/last destination/source route.
+          (Note also that such switches may be useful or even necessary on a
+          routing protocol level;  this text only refers to the actual
+          routing table and packet forwarding aspects.)</t>
+        <t>In protocol design, any integration of destination/source routing
+          into a routing protocol SHOULD function such that plain destination-only
+          operation remains untouched.  The only reason to deviate from this
+          requirement would be if the protocol in question cannot accomodate
+          this in a reasonable manner, and this deviation would come at a
+          significant penalty in compatibility and additional protocol
+          development work required to address mixed deployments.
+        </t>
+      </section>
+
       <section title="Recursive routing">
         <t>Dynamic routing protocols may propagate routing information
           in a recursive way. Examples of such recursion is forwarding
