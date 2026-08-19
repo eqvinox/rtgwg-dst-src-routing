@@ -533,7 +533,7 @@ A ⊂ B :=    Adst ⊂  Bdst
         <t>It is noteworthy to point out that a destination/source capable
           router that has no destination/source routes installed will behave
           exactly the same as a plain destination based router.  As a result
-          of this, a destination/source router SHOULD NOT have a
+          of this, a destination/source router <bcp14>SHOULD NOT</bcp14> have a
           "compatibility mode" switch controlling the router's fundamental
           forwarding behavior -- it simply supports destination/source routes,
           if there are any.  The main reason to break with this
@@ -545,7 +545,7 @@ A ⊂ B :=    Adst ⊂  Bdst
           routing protocol level;  this text only refers to the actual
           routing table and packet forwarding aspects.)</t>
         <t>In protocol design, any integration of destination/source routing
-          into a routing protocol SHOULD function such that plain destination-only
+          into a routing protocol <bcp14>SHOULD</bcp14> function such that plain destination-only
           operation remains untouched.  The only reason to deviate from this
           requirement would be if the protocol in question cannot accomodate
           this in a reasonable manner, and this deviation would come at a
