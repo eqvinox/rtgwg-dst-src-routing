@@ -511,8 +511,9 @@ A ⊂ B :=    Adst ⊂  Bdst
 
         <t>Above considerations require a knowledge of the nexthop
           router's capabilities. For routing protocols based on
-          hop-by-hop flooding such as <xref target="RFC4271">BGP</xref>) knowing the peer's
-          capabilities is sufficient. Information about if peer supports
+          hop-by-hop propagation (such as <xref target="RFC4271">BGP</xref>
+          and <xref target="RFC8966">BABEL</xref>) knowing the peer's
+          capabilities is sufficient. Information about if a peer supports
           destination-source routing can either be negotiated
           explicitly or simply be deduced from the fact that systems
           would propagate destination-source routing information only
@@ -1089,6 +1090,7 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8028.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8043.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8475.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8966.xml"/>
       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.troan-homenet-sadr.xml"/>
       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.baker-ipv6-isis-dst-src-routing"/>
       <reference anchor="hal-00947234v1" target="https://hal-univ-diderot.archives-ouvertes.fr/hal-00947234v1">
