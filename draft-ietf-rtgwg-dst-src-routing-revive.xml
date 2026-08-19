@@ -1080,7 +1080,6 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
 
     <references title="Informative References">
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.0791.xml"/>
-      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2080.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2827.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3882.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.4271.xml"/>
