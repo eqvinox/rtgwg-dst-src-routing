@@ -39,7 +39,7 @@
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
      category="std"
      submissionType="IETF"
-     docName="draft-ietf-rtgwg-dst-src-routing-revive-05"
+     docName="draft-ietf-rtgwg-dst-src-routing-revive-06"
      ipr="trust200902"
      consensus="true">
   <front>
@@ -1001,7 +1001,8 @@ Furthermore, such heterogeneous deployments are significantly more complex to op
 
     <section anchor="log" title="Change Log">
       <t><list style="hanging">
-        <t hangText="August 2026 [-06]:"><list>
+        <t hangText="September 2026 [-06]:"><list>
+        <t>add some text about cost/performance</t>
         <t>Using 'destination-source' consistently, removing<br/>
           'source-destination', 'dst-src'.</t>
         <t>Adding some text about <xref target="I-D.ietf-6man-rfc6724-update"/> and making it a normative reference.</t>
